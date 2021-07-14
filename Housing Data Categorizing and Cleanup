@@ -46,3 +46,17 @@ for i in train_df.columns:
         
         
         
+##Plots all numerical variables vs SalePrice
+#Useful to check the linearity of the variables
+#Also plots for discrete numerical variables, but still kinda helpful for those
+filepath = 'C:/yourlocation'
+fig = plt.figure(figsize=(30,20),dpi = 100)
+plt.rcParams['figure.figsize'] = [15, 10]
+for i in range(0,len(train_df)):
+    if(train_df[train_df.columns[i]].dtype == ('int64' or 'float64')):
+        plt.plot(train_df[train_df.columns[i]],train_df["SalePrice"], "b.",label = train_df.columns[i])
+        plt.legend()
+        plt.savefig(filepath+train_df.columns[i]+"vs SalePrice")
+        plt.ylabel("SalePrice")
+        plt.xlabel(train_df.columns[i])
+        plt.clf()
